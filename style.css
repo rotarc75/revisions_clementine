@@ -1,0 +1,114 @@
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --text-main: #1f2937;
+    --text-light: #6b7280;
+    --bg: #f3f4f6;
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.navbar {
+    background: var(--white);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.logo span { color: var(--primary); }
+
+.app-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+/* Grille de cartes */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.quiz-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.quiz-card h3 { margin-top: 0; color: var(--primary); }
+
+/* Formulaire et Questions */
+.question-block {
+    background: var(--white);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow);
+}
+
+.options label {
+    display: block;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.options label:has(input:checked) {
+    background: #eef2ff;
+    border-color: var(--primary);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+}
+
+.hidden { display: none; }
+
+.success-card {
+    text-align: center;
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}

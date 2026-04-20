@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathMaster - Préparation Concours</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="navbar">
+            <span class="logo" onclick="location.reload()">Math<span>Master</span></span>
+        </nav>
+
+        <main id="main-content">
+            <section id="home">
+                <div class="hero">
+                    <h1>Bonjour Clémentine !</h1>
+                    <p>Choisis ton sujet d'entraînement aujourd'hui.</p>
+                </div>
+                <div id="quiz-grid" class="grid"></div>
+            </section>
+
+            <section id="quiz-view" class="hidden">
+                <div class="quiz-header">
+                    <button class="btn-back" onclick="location.reload()">← Retour</button>
+                    <h2 id="quiz-title"></h2>
+                </div>
+                <form id="quiz-form">
+                    <div id="questions-area"></div>
+                    <button type="submit" id="submit-btn" class="btn-primary">Correction</button>
+                </form>
+            </section>
+
+        </main>
+    </div>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
