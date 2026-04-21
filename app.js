@@ -21,10 +21,11 @@ function showQuizList(category) {
     const grid = document.getElementById('quiz-grid');
     grid.innerHTML = '';
 
+    // Bouton de retour vers le menu principal
     const backBtn = document.createElement('div');
     backBtn.className = 'quiz-card';
     backBtn.style.borderColor = "#ddd";
-    backBtn.innerHTML = `<h3>← Retour</h3>`;
+    backBtn.innerHTML = `<h3>← Retour aux thèmes</h3>`;
     backBtn.onclick = showCategories;
     grid.appendChild(backBtn);
 
@@ -45,6 +46,12 @@ function startQuiz(quizInfo) {
     document.body.appendChild(script);
 }
 
+// Nouvelle fonction de retour sécurisée
+function goBackToQuizList() {
+    document.getElementById('quiz-view').classList.add('hidden');
+    document.getElementById('home').classList.remove('hidden');
+}
+
 function displayQuiz(data) {
     document.getElementById('home').classList.add('hidden');
     document.getElementById('quiz-view').classList.remove('hidden');
@@ -55,12 +62,22 @@ function displayQuiz(data) {
     const form = document.getElementById('quiz-form');
     const submitBtn = document.getElementById('submit-btn');
 
+    // On efface l'ancien score s'il y en avait un
+    const oldScore = document.getElementById('score-display');
+    if (oldScore) oldScore.remove();
+
+    // Cas 1 : Exercice classique
     if (data.type === "exercice") {
         area.innerHTML = `<div class="question-block" style="font-size: 1.1rem;">${data.enonce}</div>`;
         submitBtn.innerText = "J'ai terminé";
         submitBtn.style.display = "block";
-        form.onsubmit = (e) => { e.preventDefault(); location.reload(); };
-    } else {
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            goBackToQuizList(); // Retour au menu du thème
+        };
+    }
+    // Cas 2 : QCM normal
+    else {
         submitBtn.innerText = "Correction";
         submitBtn.style.display = "block";
 
@@ -69,9 +86,8 @@ function displayQuiz(data) {
             block.className = 'question-block';
 
             const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
-            shuffledOptions.push("Je ne sais pas"); // Injection automatique
+            shuffledOptions.push("Je ne sais pas");
 
-            // Le "required" a été retiré des input
             block.innerHTML = `
                 <p class="question-text"><strong>${i+1}.</strong> ${q.q}</p>
                 <div class="options">
@@ -91,7 +107,7 @@ function displayQuiz(data) {
 
 async function submitQuizForm(e) {
     e.preventDefault();
-    const studentName = "Clémentine"; // Nom codé en dur
+    const studentName = "Clémentine";
     let score = 0;
     let correctionDetails = `Copie de ${studentName}\nSujet: ${currentQuizData.title}\n\n`;
 
@@ -102,7 +118,6 @@ async function submitQuizForm(e) {
 
         if (isCorrect) score++;
 
-        // Affichage de la correction à l'écran
         const feedbackDiv = document.getElementById(`feedback-q${index}`);
         feedbackDiv.classList.remove('hidden');
         if (isCorrect) {
@@ -111,7 +126,7 @@ async function submitQuizForm(e) {
             feedbackDiv.innerHTML = `<span style="color: #e74c3c;">✗ Attention. La bonne réponse était : ${qObj.correct}</span>`;
         }
 
-        // Verrouiller les cases
+        // On bloque les cases à cocher
         document.querySelectorAll(`input[name="q${index}"]`).forEach(r => r.disabled = true);
 
         correctionDetails += `Q${index + 1}: ${qObj.q}\nRéponse choisie : ${selectedOption} -> ${isCorrect ? "VRAI" : "FAUX"}\n\n`;
@@ -119,14 +134,16 @@ async function submitQuizForm(e) {
 
     correctionDetails += `SCORE FINAL : ${score} / ${currentQuizData.questions.length}\n`;
 
-    // Cacher le bouton et afficher le score
+    // Cacher le bouton "Correction"
     const submitBtn = document.getElementById('submit-btn');
     submitBtn.style.display = 'none';
 
+    // Afficher le score et le bouton de retour au menu
     const scoreDisplay = document.createElement('div');
+    scoreDisplay.id = 'score-display'; // Identifiant pour le nettoyer plus tard
     scoreDisplay.innerHTML = `<div style="text-align: center; margin: 20px 0; padding: 20px; background: #eef2ff; border-radius: 10px;">
         <h2 style="color: #4f46e5; margin: 0;">Score : ${score} / ${currentQuizData.questions.length}</h2>
-        <button onclick="location.reload()" class="btn-primary" style="margin-top: 15px; width: auto;">Retour à l'accueil</button>
+        <button type="button" onclick="goBackToQuizList()" class="btn-primary" style="margin-top: 15px; width: auto;">Retour aux exercices</button>
     </div>`;
     document.getElementById('quiz-form').appendChild(scoreDisplay);
 
@@ -141,18 +158,3 @@ async function submitQuizForm(e) {
 
     fetch(CONFIG.formspree_url, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }).catch(() => console.log("Erreur réseau silencieuse"));
 }
-
-function goBackToQuizList() {
-    // On cache le QCM en cours
-    document.getElementById('quiz-view').classList.add('hidden');
-    // On réaffiche la grille (qui contient toujours la liste des exercices de la catégorie)
-    document.getElementById('home').classList.remove('hidden');
-
-    // Si un message de score était affiché suite à une correction précédente, on le nettoie
-    const scoreDisplay = document.querySelector('#quiz-form > div:last-child:not(#questions-area):not(#submit-btn)');
-    if (scoreDisplay) {
-        scoreDisplay.remove();
-    }
-}
-
-
