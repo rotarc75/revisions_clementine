@@ -28,7 +28,7 @@ const CONFIG = {
         {
             id: "calculs_base",
             title: "Calculs de bases",
-            icon: "📈",
+            icon: "🧮",
             quizzes: [
                 { id: "frac1", title: "Fraction 1", file: "quizzes/fraction1.js" },
                 { id: "frac2", title: "Fraction 2", file: "quizzes/fraction2.js" },
@@ -37,6 +37,19 @@ const CONFIG = {
                 { id: "frac5", title: "Fraction 5", file: "quizzes/fraction5.js" },
                 { id: "frac6", title: "Fraction 6", file: "quizzes/fraction6.js" },
                 { id: "frac7", title: "Fraction 7", file: "quizzes/fraction7.js" }
+
+            ]
+        },
+
+
+        {
+            id: "suite",
+            title: "Suites",
+            icon: "🔢",
+            quizzes: [
+                { id: "suite1", title: "Suites 1", file: "quizzes/suite1.js" },
+                { id: "suite2", title: "Suites 2", file: "quizzes/suite2.js" },
+                { id: "suite3", title: "Suites 3", file: "quizzes/suite3.js" }
 
             ]
         }
