@@ -49,7 +49,14 @@ const CONFIG = {
             quizzes: [
                 { id: "suite1", title: "Suites 1", file: "quizzes/suite1.js" },
                 { id: "suite2", title: "Suites 2", file: "quizzes/suite2.js" },
-                { id: "suite3", title: "Suites 3", file: "quizzes/suite3.js" }
+                { id: "suite3", title: "Suites 3", file: "quizzes/suite3.js" },
+                { id: "suite4", title: "Suites 4", file: "quizzes/suite4.js" },
+                { id: "suite1", title: "Suites 5", file: "quizzes/suite5.js" },
+                { id: "suite2", title: "Suites 6", file: "quizzes/suite6.js" },
+                { id: "suite3", title: "Suites 7", file: "quizzes/suite7.js" },
+                { id: "suite4", title: "Suites 8", file: "quizzes/suite8.js" },
+                { id: "suite4", title: "Suites 9", file: "quizzes/suite9.js" },
+
 
             ]
         }
