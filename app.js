@@ -141,3 +141,18 @@ async function submitQuizForm(e) {
 
     fetch(CONFIG.formspree_url, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }).catch(() => console.log("Erreur réseau silencieuse"));
 }
+
+function goBackToQuizList() {
+    // On cache le QCM en cours
+    document.getElementById('quiz-view').classList.add('hidden');
+    // On réaffiche la grille (qui contient toujours la liste des exercices de la catégorie)
+    document.getElementById('home').classList.remove('hidden');
+
+    // Si un message de score était affiché suite à une correction précédente, on le nettoie
+    const scoreDisplay = document.querySelector('#quiz-form > div:last-child:not(#questions-area):not(#submit-btn)');
+    if (scoreDisplay) {
+        scoreDisplay.remove();
+    }
+}
+
+

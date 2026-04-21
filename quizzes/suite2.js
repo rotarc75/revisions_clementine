@@ -1,55 +1,65 @@
 var currentQuizData = {
-    title: "Suites 2 - Différences et Quotients",
+    title: "Suites 1bis - Calculer u_{n+1}",
     questions: [
         {
-            q: "On donne $u_0 = 2$ et $u_1 = 5$. Que vaut la différence $u_1 - u_0$ ?",
-            options: ["$3$", "$7$", "$-3$", "$2,5$"],
-            correct: "$3$"
+            q: "La règle d'or : pour trouver l'expression de $u_{n+1}$, que doit-on faire dans la formule de $u_n$ ?",
+            options: [
+                "Remplacer chaque $n$ par $(n+1)$ avec des parenthèses.",
+                "Ajouter 1 à la fin de la formule.",
+                "Multiplier la formule par $n+1$.",
+                "Remplacer $n$ par 1."
+            ],
+            correct: "Remplacer chaque $n$ par $(n+1)$ avec des parenthèses."
         },
         {
-            q: "On donne $u_0 = 10$ et $u_1 = 7$. Que vaut la différence $u_1 - u_0$ ? (Attention au signe)",
-            options: ["$-3$", "$3$", "$17$", "$1,5$"],
-            correct: "$-3$"
+            q: "Quelle est la différence fondamentale entre $u_{n+1}$ et $u_n + 1$ ?",
+            options: [
+                "$u_{n+1}$ est le terme suivant, $u_n + 1$ est le terme actuel auquel on ajoute 1.",
+                "C'est la même chose, c'est juste une façon différente de l'écrire.",
+                "$u_{n+1}$ est plus grand que $u_n + 1$.",
+                "$u_n + 1$ est toujours une suite arithmétique."
+            ],
+            correct: "$u_{n+1}$ est le terme suivant, $u_n + 1$ est le terme actuel auquel on ajoute 1."
         },
         {
-            q: "La suite commence par : 4, 6, 8... Que vaut la différence entre le deuxième et le premier terme ?",
-            options: ["$2$", "$10$", "$-2$", "$24$"],
-            correct: "$2$"
+            q: "On donne $u_n = 2n$. Quelle est l'expression de $u_{n+1}$ ? (Attention au développement de $2(n+1)$ !)",
+            options: ["$2n + 2$", "$2n + 1$", "$2(n) + 1$", "$n+2$"],
+            correct: "$2n + 2$"
         },
         {
-            q: "On donne $u_1 = 4$ et $u_2 = 12$. Que vaut le quotient $\\frac{u_2}{u_1}$ ? (On divise !)",
-            options: ["$3$", "$8$", "$-8$", "$\\frac{1}{3}$"],
-            correct: "$3$"
+            q: "On donne $u_n = n + 5$. Que vaut $u_{n+1}$ ?",
+            options: ["$n + 6$", "$n + 5 + 1n$", "$n + 15$", "$6n$"],
+            correct: "$n + 6$"
         },
         {
-            q: "On donne $u_0 = 5$ et $u_1 = 10$. Que vaut le quotient $\\frac{u_1}{u_0}$ ?",
-            options: ["$2$", "$5$", "$50$", "$0,5$"],
-            correct: "$2$"
+            q: "Piège classique ! On donne $u_n = -3n + 4$. Que vaut $u_{n+1}$ ? (Écris $-3(n+1) + 4$ au brouillon)",
+            options: ["$-3n + 1$", "$-3n + 5$", "$-3n + 7$", "$-3n - 3$"],
+            correct: "$-3n + 1$"
         },
         {
-            q: "La suite commence par : 2, 6, 18... Que vaut le quotient du deuxième terme divisé par le premier ?",
-            options: ["$3$", "$4$", "$12$", "$8$"],
-            correct: "$3$"
+            q: "On donne $u_n = 5^n$. Que vaut $u_{n+1}$ ?",
+            options: ["$5^{n+1}$", "$5^n + 1$", "$6^n$", "$5 \\times n + 1$"],
+            correct: "$5^{n+1}$"
         },
         {
-            q: "On donne $u_5 = 15$ et $u_6 = 20$. Que vaut $u_6 - u_5$ ?",
-            options: ["$5$", "$35$", "$-5$", "$\\frac{4}{3}$"],
-            correct: "$5$"
+            q: "On donne $u_n = 4 \\times 3^n$. Que vaut $u_{n+1}$ ?",
+            options: ["$4 \\times 3^{n+1}$", "$4 \\times 3^n + 1$", "$12^{n+1}$", "$5 \\times 3^n$"],
+            correct: "$4 \\times 3^{n+1}$"
         },
         {
-            q: "Attention ! $u_2 = 20$ et $u_3 = 10$. Que vaut le quotient $\\frac{u_3}{u_2}$ ?",
-            options: ["$0,5$", "$2$", "$10$", "$-10$"],
-            correct: "$0,5$"
+            q: "Attention au carré : $u_n = n^2$. Que vaut $u_{n+1}$ ? (Il faut utiliser l'identité remarquable $(n+1)^2$)",
+            options: ["$n^2 + 2n + 1$", "$n^2 + 1$", "$2n + 1$", "$n^2 + 2$"],
+            correct: "$n^2 + 2n + 1$"
         },
         {
-            q: "On donne $u_1 = -2$ et $u_2 = -6$. Que vaut $u_2 - u_1$ ?",
-            options: ["$-4$", "$4$", "$-8$", "$8$"],
-            correct: "$-4$"
+            q: "On donne $u_n = \\frac{n}{2} + 3$. Que vaut $u_{n+1}$ ?",
+            options: ["$\\frac{n+1}{2} + 3$", "$\\frac{n}{2} + 4$", "$\\frac{n+4}{2}$", "$\\frac{n+1}{3}$"],
+            correct: "$\\frac{n+1}{2} + 3$"
         },
         {
-            q: "On donne $u_0 = 3$ et $u_1 = -6$. Que vaut $\\frac{u_1}{u_0}$ ?",
-            options: ["$-2$", "$2$", "$-9$", "$-0,5$"],
-            correct: "$-2$"
+            q: "Ultime vérification : $u_n = 10 - 2n$. Que vaut $u_{n+1}$ ?",
+            options: ["$8 - 2n$", "$12 - 2n$", "$10 - 2n + 1$", "$10 - 3n$"],
+            correct: "$8 - 2n$"
         }
     ]
 };
